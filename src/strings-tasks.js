@@ -6,7 +6,7 @@
  ******************************************************************************************* */
 
 /**
- * Returns the length of the given string.
+ * Returns the length of the given string. --------------------------------------------------------------------
  *
  * @param {string} value - The input string to calculate the length of.
  * @return {number} - The length of the string.
@@ -19,12 +19,12 @@
  *   getStringLength(null) => 0
  *   getStringLength(undefined) => 0
  */
-function getStringLength(/* value */) {
-  throw new Error('Not implemented');
+function getStringLength(value) {
+  return typeof value === 'string' ? value.length : 0;
 }
 
 /**
- * Returns true if the value is a string, otherwise returns false.
+ * Returns true if the value is a string, otherwise returns false.-------------------------------------------------------------------
  *
  * @param {string} value - The value to check if it's a string.
  * @return {boolean} - True if the value is a string, false otherwise.
@@ -37,8 +37,8 @@ function getStringLength(/* value */) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(/* value */) {
-  throw new Error('Not implemented');
+function isString(value) {
+  return typeof value === 'string' || value instanceof String;
 }
 
 /**
@@ -58,7 +58,7 @@ function concatenateStrings(/* value1, value2 */) {
 }
 
 /**
- * Returns the first character of the given string.
+ * Returns the first character of the given string.------------------------------------------------------------------------
  *
  * @param {string} value - The input string to extract the first character from.
  * @return {string} - The first character of the string.
@@ -68,12 +68,12 @@ function concatenateStrings(/* value1, value2 */) {
  *   getFirstChar('cat') => 'c'
  *   getFirstChar('') => ''
  */
-function getFirstChar(/* value */) {
-  throw new Error('Not implemented');
+function getFirstChar(value) {
+  return value.charAt(0);
 }
 
 /**
- * Removes leading and trailing whitespace characters from the string.
+ * Removes leading and trailing whitespace characters from the string.-------------------------------------------------------------------
  *
  * @param {string} value - The input string to remove leading and trailing whitespaces from.
  * @return {string} - The string with leading and trailing whitespaces removed.
@@ -83,12 +83,12 @@ function getFirstChar(/* value */) {
  *   removeLeadingAndTrailingWhitespaces('cat ') => 'cat'
  *   removeLeadingAndTrailingWhitespaces('\t\t\tHello, World! ') => 'Hello, World!'
  */
-function removeLeadingAndTrailingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeLeadingAndTrailingWhitespaces(value) {
+  return value.trim();
 }
 
 /**
- * Removes only leading whitespace characters from the string.
+ * Removes only leading whitespace characters from the string.--------------------------------------------
  *
  * @param {string} value - The input string to remove leading whitespaces from.
  * @return {string} - The string with leading whitespaces removed.
@@ -98,12 +98,12 @@ function removeLeadingAndTrailingWhitespaces(/* value */) {
  *   removeLeadingWhitespaces('cat ') => 'cat '
  *   removeLeadingWhitespaces('\t\t\tHello, World! ') => 'Hello, World! '
  */
-function removeLeadingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeLeadingWhitespaces(value) {
+  return value.trimStart();
 }
 
 /**
- * Removes only trailing whitespace characters from the string.
+ * Removes only trailing whitespace characters from the string.------------------------------------------------------------
  *
  * @param {string} value - The input string to remove trailing whitespaces from.
  * @return {string} - The string with trailing whitespaces removed.
@@ -113,8 +113,8 @@ function removeLeadingWhitespaces(/* value */) {
  *   removeTrailingWhitespaces('cat ') => 'cat'
  *   removeTrailingWhitespaces('\t\t\tHello, World! ') => '\t\t\tHello, World!'
  */
-function removeTrailingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeTrailingWhitespaces(value) {
+  return value.trimEnd();
 }
 
 /**
