@@ -42,7 +42,7 @@ function isString(value) {
 }
 
 /**
- * Returns the result of concatenation of two strings.
+ * Returns the result of concatenation of two strings.-------------------------------------------------------------------
  *
  * @param {string} value1 - The first string to concatenate.
  * @param {string} value2 - The second string to concatenate.
@@ -53,8 +53,8 @@ function isString(value) {
  *   concatenateStrings('aa', '') => 'aa'.
  *   concatenateStrings('', 'bb') => 'bb'
  */
-function concatenateStrings(/* value1, value2 */) {
-  throw new Error('Not implemented');
+function concatenateStrings(value1, value2) {
+  return value1.concat(value2);
 }
 
 /**
@@ -88,7 +88,7 @@ function removeLeadingAndTrailingWhitespaces(value) {
 }
 
 /**
- * Removes only leading whitespace characters from the string.--------------------------------------------
+ * Removes only leading whitespace characters from the string.---------------------------------------------------------
  *
  * @param {string} value - The input string to remove leading whitespaces from.
  * @return {string} - The string with leading whitespaces removed.
@@ -118,7 +118,7 @@ function removeTrailingWhitespaces(value) {
 }
 
 /**
- * Returns a string that is repeated the specified number of times.
+ * Returns a string that is repeated the specified number of times.---------------------------------------------------------------------
  *
  * @param {string} str - The string to repeat.
  * @param {number} times - The number of times to repeat the string.
@@ -130,12 +130,12 @@ function removeTrailingWhitespaces(value) {
  *   repeatString('', 3) => ''
  *   repeatString('abc', -2) => ''
  */
-function repeatString(/* str, times */) {
-  throw new Error('Not implemented');
+function repeatString(str, times) {
+  return times > 0 ? str.repeat(times) : '';
 }
 
 /**
- * Remove the first occurrence of a substring from a string.
+ * Remove the first occurrence of a substring from a string.-------------------------------------------------------------
  *
  * @param {string} str - The input string.
  * @param {string} value - The substring to remove from the string.
@@ -146,12 +146,16 @@ function repeatString(/* str, times */) {
  *   removeFirstOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeFirstOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeFirstOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeFirstOccurrences(str, value) {
+  const index = str.indexOf(value);
+  if (index !== -1) {
+    return str.slice(0, index) + str.slice(index + value.length);
+  }
+  return str;
 }
 
 /**
- * Remove the last occurrence of a substring from a string.
+ * Remove the last occurrence of a substring from a string.---------------------------------------------------------------
  *
  * @param {string} str - The input string.
  * @param {string} value - The substring to remove from the string.
@@ -162,8 +166,12 @@ function removeFirstOccurrences(/* str, value */) {
  *   removeLastOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeLastOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeLastOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeLastOccurrences(str, value) {
+  const lastIndex = str.lastIndexOf(value);
+  if (lastIndex !== -1) {
+    return str.slice(0, lastIndex) + str.slice(lastIndex + value.length);
+  }
+  return str;
 }
 
 /**
@@ -230,7 +238,7 @@ function formatTime(/* minutes, seconds */) {
 }
 
 /**
- * Returns a string in reverse order.
+ * Returns a string in reverse order.------------------------------------------------------------
  *
  * @param {string} str - The input string.
  * @return {string} - The string in reverse order.
@@ -239,8 +247,8 @@ function formatTime(/* minutes, seconds */) {
  *   reverseString('abcdef') => 'fedcba'
  *   reverseString('12345') => '54321'
  */
-function reverseString(/* str */) {
-  throw new Error('Not implemented');
+function reverseString(str) {
+  return str === '' ? '' : reverseString(str.substr(1)) + str.charAt(0);
 }
 
 /**
@@ -355,7 +363,7 @@ function invertCase(/* str */) {
 }
 
 /**
- * Returns the result of string template and given parameters firstName and lastName.
+ * Returns the result of string template and given parameters firstName and lastName.---------------------------------------------------
  * Please do not use concatenation, use template string :
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/template_strings
  *
@@ -367,12 +375,12 @@ function invertCase(/* str */) {
  *   getStringFromTemplate('John','Doe') => 'Hello, John Doe!'
  *   getStringFromTemplate('Chuck','Norris') => 'Hello, Chuck Norris!'
  */
-function getStringFromTemplate(/* firstName, lastName */) {
-  throw new Error('Not implemented');
+function getStringFromTemplate(firstName, lastName) {
+  return `Hello, ${firstName} ${lastName}!`;
 }
 
 /**
- * Extracts a name from template string 'Hello, First_Name Last_Name!'.
+ * Extracts a name from template string 'Hello, First_Name Last_Name!'.------------------------------------------------------------
  *
  * @param {string} value - The input value.
  * @return {string} - The name extracted from the template.
@@ -381,12 +389,12 @@ function getStringFromTemplate(/* firstName, lastName */) {
  *   extractNameFromTemplate('Hello, John Doe!') => 'John Doe'
  *   extractNameFromTemplate('Hello, Chuck Norris!') => 'Chuck Norris'
  */
-function extractNameFromTemplate(/* value */) {
-  throw new Error('Not implemented');
+function extractNameFromTemplate(value) {
+  return value.replace(/Hello, (.*?)!/, '$1');
 }
 
 /**
- * Remove the first and last angle brackets from tag string
+ * Remove the first and last angle brackets from tag string---------------------------------------------------------------------------
  *
  * @param {string} str - The input tag.
  * @return {string} - The tag without the first and last angle brackets.
@@ -396,12 +404,12 @@ function extractNameFromTemplate(/* value */) {
  *   unbracketTag('<span>') => 'span'
  *   unbracketTag('<a>') => 'a'
  */
-function unbracketTag(/* str */) {
-  throw new Error('Not implemented');
+function unbracketTag(str) {
+  return str.replace(/<(.*?)>/, '$1');
 }
 
 /**
- * Extracts e-mails from single string with e-mails list delimited by semicolons
+ * Extracts e-mails from single string with e-mails list delimited by semicolons-------------------------------------------------------------
  *
  * @param {string} str - The input string.
  * @return {array} - The list of e-mails extracted from the string.
@@ -415,8 +423,8 @@ function unbracketTag(/* str */) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails(/* str */) {
-  throw new Error('Not implemented');
+function extractEmails(str) {
+  return str.split(';');
 }
 
 /**
