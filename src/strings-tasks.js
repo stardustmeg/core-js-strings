@@ -175,7 +175,7 @@ function removeLastOccurrences(str, value) {
 }
 
 /**
- * Calculate the sum of character codes of the given string.
+ * Calculate the sum of character codes of the given string.----------------------------------------------------------------------
  *
  * @param {string} str - The input string.
  * @return {number} - The sum of character codes of the string.
@@ -186,12 +186,19 @@ function removeLastOccurrences(str, value) {
  *   sumOfCodes('') => 0
  *   sumOfCodes() => 0
  */
-function sumOfCodes(/* str */) {
-  throw new Error('Not implemented');
+function sumOfCodes(str) {
+  if (typeof str !== 'string') {
+    return 0;
+  }
+  let sum = 0;
+  for (let i = 0; i < str.length; i = 1 + i) {
+    sum += str.charCodeAt(i);
+  }
+  return sum;
 }
 
 /**
- * Checks if a string starts with a specific substring.
+ * Checks if a string starts with a specific substring.-------------------------------------------------------------------------------
  *
  * @param {string} str - The input string.
  * @param {string} substr - The substring to check.
@@ -201,12 +208,12 @@ function sumOfCodes(/* str */) {
  *   startsWith('Hello World', 'World') => false
  *   startsWith('Hello World', 'Hello') => true
  */
-function startsWith(/* str, substr */) {
-  throw new Error('Not implemented');
+function startsWith(str, substr) {
+  return str.startsWith(substr);
 }
 
 /**
- * Checks if a string ends with a specific substring.
+ * Checks if a string ends with a specific substring.-------------------------------------------------------------------------------
  *
  * @param {string} str - The input string.
  * @param {string} substr - The substring to check.
@@ -216,12 +223,12 @@ function startsWith(/* str, substr */) {
  *   endsWith('Hello World', 'World') => true
  *   endsWith('Hello World', 'Hello') => false
  */
-function endsWith(/* str, substr */) {
-  throw new Error('Not implemented');
+function endsWith(str, substr) {
+  return str.endsWith(substr);
 }
 
 /**
- * Returns a time string in the "mm:ss" format.
+ * Returns a time string in the "mm:ss" format.----------------------------------------------------------------------------------
  *
  * @param {number} minutes - The number of minutes (non-negative integer).
  * @param {number} seconds - The number of seconds (non-negative integer).
@@ -233,12 +240,14 @@ function endsWith(/* str, substr */) {
  *   formatTime(0, 45) => "00:45"
  *   formatTime(0, 0) => "00:00"
  */
-function formatTime(/* minutes, seconds */) {
-  throw new Error('Not implemented');
+function formatTime(minutes, seconds) {
+  const paddedMinutes = String(minutes).padStart(2, '0');
+  const paddedSeconds = String(seconds).padStart(2, '0');
+  return `${paddedMinutes}:${paddedSeconds}`;
 }
 
 /**
- * Returns a string in reverse order.------------------------------------------------------------
+ * Returns a string in reverse order.-----------------------------------------------------------------------
  *
  * @param {string} str - The input string.
  * @return {string} - The string in reverse order.
@@ -252,7 +261,7 @@ function reverseString(str) {
 }
 
 /**
- * Returns a string with characters in alphabetical order.
+ * Returns a string with characters in alphabetical order.--------------------------------------------------------------------------
  *
  * @param {string} str - The input string.
  * @return {string} - The string in alphabetical order.
@@ -262,12 +271,14 @@ function reverseString(str) {
  *   orderAlphabetically('textbook') => 'bekoottx'
  *   orderAlphabetically('abc123xyz') => '123abcxyz'
  */
-function orderAlphabetically(/* str */) {
-  throw new Error('Not implemented');
+function orderAlphabetically(str) {
+  const arr = str.split('');
+  const result = arr.sort().join('');
+  return result;
 }
 
 /**
- * Checks if a given string contains a specified substring.
+ * Checks if a given string contains a specified substring.----------------------------------------------------------------------------
  *
  * @param {string} str - The input string to search within.
  * @param {string} substring - The substring to check for in the input string.
@@ -278,12 +289,12 @@ function orderAlphabetically(/* str */) {
  *   containsSubstring('JavaScript is Fun', 'Python') => false
  *   containsSubstring('12345', '34') => true
  */
-function containsSubstring(/* str, substring */) {
-  throw new Error('Not implemented');
+function containsSubstring(str, substring) {
+  return str.includes(substring);
 }
 
 /**
- * Returns the number of vowels in the string.
+ * Returns the number of vowels in the string.----------------------------------------------------------------------------------
  * Vowels: 'a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y'.
  *
  * @param {string} str - The input string.
@@ -296,12 +307,23 @@ function containsSubstring(/* str, substring */) {
  *   countVowels('aEiOu') => 5
  *   countVowels('XYZ') => 1
  */
-function countVowels(/* str */) {
-  throw new Error('Not implemented');
+function countVowels(str) {
+  if (typeof str !== 'string') {
+    return 0;
+  }
+  const vowels = 'aeiouyAEIOUY';
+  let count = 0;
+  for (let i = 0, len = str.length; i < len; i += 1) {
+    const char = str[i];
+    if (vowels.includes(char)) {
+      count += 1;
+    }
+  }
+  return count;
 }
 
 /**
- * Returns true if the string is a palindrome; otherwise false.
+ * Returns true if the string is a palindrome; otherwise false.------------------------------------------------------------
  * https://en.wikipedia.org/wiki/Palindrome
  *
  * @param {string} str - The input string.
@@ -313,12 +335,14 @@ function countVowels(/* str */) {
  *   isPalindrome('apple') => false
  *   isPalindrome('No lemon, no melon') => true
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  const cleanStr = str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+  const reversedStr = cleanStr.split('').reverse().join('');
+  return cleanStr === reversedStr;
 }
 
 /**
- * Find the longest word in the sentence. If there are multiple longest words,
+ * Find the longest word in the sentence. If there are multiple longest words,---------------------------------------------------------
  * the function returns the first one encountered.
  *
  * @param {string} sentence - The input sentence.
@@ -329,12 +353,15 @@ function isPalindrome(/* str */) {
  *   findLongestWord('A long and winding road') => 'winding'
  *   findLongestWord('No words here') => 'words'
  */
-function findLongestWord(/* sentence */) {
-  throw new Error('Not implemented');
+function findLongestWord(sentence) {
+  const longestWord = sentence.split(' ').sort(function (a, b) {
+    return b.length - a.length;
+  });
+  return longestWord[0];
 }
 
 /**
- * Returns the string where each word is reversed.
+ * Returns the string where each word is reversed.---------------------------------------------------------------------
  *
  * @param {string} str - The input string.
  * @return {string} - The string where each word is reversed.
@@ -343,12 +370,18 @@ function findLongestWord(/* sentence */) {
  *   reverseWords('Hello World') => 'olleH dlroW'
  *   reverseWords('The Quick Brown Fox') => 'ehT kciuQ nworB xoF'
  */
-function reverseWords(/* str */) {
-  throw new Error('Not implemented');
+function reverseWords(str) {
+  const strSplit = str.split(' ');
+  let result = '';
+  for (let i = 0; i < strSplit.length; i += 1) {
+    const separateWord = reverseString(strSplit[i]);
+    result = `${result} ${separateWord}`;
+  }
+  return result.trim();
 }
 
 /**
- * Inverts the case of each character in the given string.
+ * Inverts the case of each character in the given string.---------------------------------------------------------------------------
  *
  * @param {string} str - The input string.
  * @returns {string} - The string with the case of each character inverted.
@@ -358,8 +391,13 @@ function reverseWords(/* str */) {
  *   invertCase('JavaScript is Fun') => 'jAVASCRIPT IS fUN'
  *   invertCase('12345') => '12345'
  */
-function invertCase(/* str */) {
-  throw new Error('Not implemented');
+function invertCase(str) {
+  return str.replace(/\w/g, function (c) {
+    if (c === c.toLowerCase()) {
+      return c.toUpperCase();
+    }
+    return c.toLowerCase();
+  });
 }
 
 /**
@@ -428,7 +466,7 @@ function extractEmails(str) {
 }
 
 /**
- * Encode specified string with ROT13 cipher
+ * Encode specified string with ROT13 cipher--------------------------------------------------------------------------
  * See details:  https://en.wikipedia.org/wiki/ROT13
  *
  * @param {string} str - The input string.
@@ -443,14 +481,20 @@ function extractEmails(str) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  return str.replace(/[a-zA-Z]/g, function (c) {
+    const base = c <= 'Z' ? 65 : 97;
+    const charAt = c.charCodeAt(0);
+    const charOrigin = charAt - base + 13;
+    const charIndex = (charOrigin % 26) + base;
+    return String.fromCharCode(charIndex);
+  });
 }
 
 /**
- * Returns playid card id.
+ * Returns playid card id.----------------------------------------------------------------------------------------------
  *
- * Playing cards inittial deck inclides the cards in the following order:
+ * Playing cards initial deck includes the cards in the following order:
  *
  *  'A♣','2♣','3♣','4♣','5♣','6♣','7♣','8♣','9♣','10♣','J♣','Q♣','K♣',
  *  'A♦','2♦','3♦','4♦','5♦','6♦','7♦','8♦','9♦','10♦','J♦','Q♦','K♦',
@@ -471,8 +515,62 @@ function encodeToRot13(/* str */) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId(/* value */) {
-  throw new Error('Not implemented');
+function getCardId(value) {
+  const arr = [
+    'A♣',
+    '2♣',
+    '3♣',
+    '4♣',
+    '5♣',
+    '6♣',
+    '7♣',
+    '8♣',
+    '9♣',
+    '10♣',
+    'J♣',
+    'Q♣',
+    'K♣',
+    'A♦',
+    '2♦',
+    '3♦',
+    '4♦',
+    '5♦',
+    '6♦',
+    '7♦',
+    '8♦',
+    '9♦',
+    '10♦',
+    'J♦',
+    'Q♦',
+    'K♦',
+    'A♥',
+    '2♥',
+    '3♥',
+    '4♥',
+    '5♥',
+    '6♥',
+    '7♥',
+    '8♥',
+    '9♥',
+    '10♥',
+    'J♥',
+    'Q♥',
+    'K♥',
+    'A♠',
+    '2♠',
+    '3♠',
+    '4♠',
+    '5♠',
+    '6♠',
+    '7♠',
+    '8♠',
+    '9♠',
+    '10♠',
+    'J♠',
+    'Q♠',
+    'K♠',
+  ];
+  return arr.indexOf(value);
 }
 
 module.exports = {
