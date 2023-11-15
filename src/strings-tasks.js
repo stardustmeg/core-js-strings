@@ -182,7 +182,7 @@ function removeLastOccurrences(str, value) {
  *
  * @example
  *   sumOfCodes('My String') => 861 (77 + 121 + 32 + 83 + 116 + 114 + 105 + 110 + 103 = 861)
- *   sumOfCodes('12345') => 495 (9 + 50 + 51 + 52 + 53 = 495)
+ *   sumOfCodes('12345') => 255 (49 + 50 + 51 + 52 + 53 = 255)
  *   sumOfCodes('') => 0
  *   sumOfCodes() => 0
  */
@@ -388,7 +388,7 @@ function reverseWords(str) {
  *
  * @example
  *   invertCase('Hello, World!') =>  'hELLO, wORLD!'
- *   invertCase('JavaScript is Fun') => 'jAVASCRIPT IS fUN'
+ *   invertCase('JavaScript is Fun') => 'jAVAsCRIPT IS fUN'
  *   invertCase('12345') => '12345'
  */
 function invertCase(str) {
