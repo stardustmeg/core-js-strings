@@ -354,7 +354,7 @@ function isPalindrome(str) {
  *   findLongestWord('No words here') => 'words'
  */
 function findLongestWord(sentence) {
-  const longestWord = sentence.split(' ').sort(function (a, b) {
+  const longestWord = sentence.split(' ').sort(function sorting(a, b) {
     return b.length - a.length;
   });
   return longestWord[0];
@@ -392,7 +392,7 @@ function reverseWords(str) {
  *   invertCase('12345') => '12345'
  */
 function invertCase(str) {
-  return str.replace(/\w/g, function (c) {
+  return str.replace(/\w/g, function replace(c) {
     if (c === c.toLowerCase()) {
       return c.toUpperCase();
     }
@@ -482,7 +482,7 @@ function extractEmails(str) {
  *
  */
 function encodeToRot13(str) {
-  return str.replace(/[a-zA-Z]/g, function (c) {
+  return str.replace(/[a-zA-Z]/g, function replacing(c) {
     const base = c <= 'Z' ? 65 : 97;
     const charAt = c.charCodeAt(0);
     const charOrigin = charAt - base + 13;
